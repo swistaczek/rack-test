@@ -131,7 +131,7 @@ module Rack
       # environment hash in HTTP_USER_AGENT form.
       #
       # Example:
-      #   header "User-Agent", "Firefox"
+      #   header "Http-User-Agent", "Firefox"
       def header(name, value)
         if value.nil?
           @headers.delete(name)
@@ -293,7 +293,6 @@ module Rack
 
         @headers.each do |name, value|
           env_key = name.upcase.gsub("-", "_")
-          env_key = "HTTP_" + env_key unless "CONTENT_TYPE" == env_key
           converted_headers[env_key] = value
         end
 
